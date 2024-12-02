@@ -1,0 +1,20 @@
+.nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item {
+  font-size: 24px;
+}
+.nav-item:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-line {
+  margin-top: 25px;
+  border-bottom: 1px solid black;
+  width: 2000px;
+}/*# sourceMappingURL=style.css.map */
