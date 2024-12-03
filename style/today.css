@@ -44,7 +44,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 1vh;
   font-size: 20px;
   font-weight: 650;
+}
+
+.today-plusplan-ui {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+  border: 1px solid black;
+  height: 50vh;
+  width: 50vh;
+  margin-top: -5vh;
+  padding: 8px;
+}
+.today-plusplan-ui h1 {
+  margin-top: -0.7vh;
+}
+.today-plusplan-ui h1 button {
+  margin-left: 13vh;
+  border: none;
+  position: absolute;
+  outline: none;
+  background-color: white;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+.today-plusplan-ui h1 button:hover {
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #999;
+}
+
+.hidden {
+  display: none;
 }/*# sourceMappingURL=today.css.map */

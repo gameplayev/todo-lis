@@ -1,5 +1,8 @@
 const dayOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
 const todayDayShow = document.querySelector(".today-date-show div");
+const todayPlusPlanUi = document.querySelector(".today-plusplan-ui");
+const buttonTodayPlusPlanUiOpen = document.querySelector(".today-nav button:nth-child(2)");
+const buttonTodayPlusPlanUiClose = document.querySelector(".today-plusplan-ui h1 button");
 
 function curtime() {
     const curDate = new Date();
@@ -22,4 +25,15 @@ function curtime() {
     todayDayShow.innerText = displayDate;
 }
 curtime();
-setInterval(curtime, 999);
+setInterval(curtime, 1000);
+
+function HandlePlusPlanOpenButtonClick(){
+    todayPlusPlanUi.classList.remove("hidden");
+}
+
+function HandlePlusPlanCloseButtonClick(){
+    todayPlusPlanUi.classList.add("hidden");
+}
+
+buttonTodayPlusPlanUiOpen.addEventListener("click",HandlePlusPlanOpenButtonClick);
+buttonTodayPlusPlanUiClose.addEventListener("click",HandlePlusPlanCloseButtonClick);
