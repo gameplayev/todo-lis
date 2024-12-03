@@ -1,0 +1,45 @@
+.today-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+
+    div {
+        font-size: 32px;
+    }
+
+    button {
+        border: 0;
+        outline: none;
+        margin-left: 10px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px; 
+        height: 40px; 
+        padding: 0;
+
+        svg {
+            width: 24px; 
+            height: 24px; 
+            object-fit: cover;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: #999;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.today-date-show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 20px;
+}

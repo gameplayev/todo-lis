@@ -1,0 +1,42 @@
+.today-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+.today-nav div {
+  font-size: 32px;
+}
+.today-nav button {
+  border: 0;
+  outline: none;
+  margin-left: 10px;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+.today-nav button svg {
+  width: 24px;
+  height: 24px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.today-nav button:hover {
+  cursor: pointer;
+  background-color: #999;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.today-date-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 20px;
+}/*# sourceMappingURL=today.css.map */
