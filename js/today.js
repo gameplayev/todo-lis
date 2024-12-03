@@ -1,8 +1,11 @@
 const dayOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
 const todayDayShow = document.querySelector(".today-date-show div");
 const todayPlusPlanUi = document.querySelector(".today-plusplan-ui");
-const buttonTodayPlusPlanUiOpen = document.querySelector(".today-nav button:nth-child(2)");
+const buttonTodayPlusPlanUiOpen = document.querySelector("#today-plus-open");
 const buttonTodayPlusPlanUiClose = document.querySelector(".today-plusplan-ui h1 button");
+const buttonTodayDeletePlanUiOpen = document.querySelector("#today-del-all-open");
+const todayDeletePlanUi = document.querySelector(".today-delete-ui");
+const buttonTodayDeletePlanUiClose = document.querySelector(".today-delete-ui span");
 
 function curtime() {
     const curDate = new Date();
@@ -35,5 +38,15 @@ function HandlePlusPlanCloseButtonClick(){
     todayPlusPlanUi.classList.add("hidden");
 }
 
+function HandleDeletePlanOpenButtonClick(){
+    todayDeletePlanUi.classList.remove("hidden");
+}
+
+function HandleDeletePlanCloseButtonClick(){
+    todayDeletePlanUi.classList.add("hidden");
+}
+
 buttonTodayPlusPlanUiOpen.addEventListener("click",HandlePlusPlanOpenButtonClick);
 buttonTodayPlusPlanUiClose.addEventListener("click",HandlePlusPlanCloseButtonClick);
+buttonTodayDeletePlanUiOpen.addEventListener("click",HandleDeletePlanOpenButtonClick);
+buttonTodayDeletePlanUiClose.addEventListener("click",HandleDeletePlanCloseButtonClick);
