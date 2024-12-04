@@ -6,7 +6,6 @@ const buttonTodayPlusPlanUiClose = document.querySelector(".today-plusplan-ui h1
 const buttonTodayDeletePlanUiOpen = document.querySelector("#today-del-all-open");
 const todayDeletePlanUi = document.querySelector(".today-delete-ui");
 const buttonTodayDeletePlanUiClose = document.querySelector(".today-delete-ui span");
-
 function curtime() {
     const curDate = new Date();
 
@@ -50,3 +49,16 @@ buttonTodayPlusPlanUiOpen.addEventListener("click",HandlePlusPlanOpenButtonClick
 buttonTodayPlusPlanUiClose.addEventListener("click",HandlePlusPlanCloseButtonClick);
 buttonTodayDeletePlanUiOpen.addEventListener("click",HandleDeletePlanOpenButtonClick);
 buttonTodayDeletePlanUiClose.addEventListener("click",HandleDeletePlanCloseButtonClick);
+
+
+//start of next-line, handle about Plan-add functions
+
+const formOfplanInfo = document.querySelector(".today-input-group");
+
+function addPlanByInfo(target){
+    //target.preventDefault();
+    
+}
+
+
+formOfplanInfo.addEventListener("sumbit",addPlanByInfo);

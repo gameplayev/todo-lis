@@ -43,7 +43,7 @@
 .today-date-show {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 1vh;
   font-size: 20px;
   font-weight: 650;
@@ -129,6 +129,17 @@
 }
 .today-plusplan-ui .today-input-group .today-comfirm-add {
   margin-top: 20vh;
+  border: 0px;
+  width: 6vw;
+  height: 3vh;
+  font-size: 18px;
+  font-weight: 550;
+  border-radius: 20px;
+  padding: 0.5vh;
+}
+.today-plusplan-ui .today-input-group .today-comfirm-add:hover {
+  cursor: pointer;
+  background-color: #999;
 }
 
 .today-delete-ui {
@@ -177,4 +188,15 @@
 
 .hidden {
   display: none;
+}
+
+.today-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1.5px solid black;
+  width: 100vh;
+  height: 70vh;
+  margin-top: 2vh;
 }/*# sourceMappingURL=today.css.map */
