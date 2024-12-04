@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do List</title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/today.css">
 </head>
 <body>
     <div class="nav">
-        <div class="nav-item">어제 계획 보기</div>
         <div class="nav-item">오늘 계획 보기</div>
-        <div class="nav-item">내일 계획 새우기</div>
+        <div class="nav-item">설정</div>
     </div>
     <div class="nav-line"></div>
     <div class="today-all">
@@ -28,6 +27,13 @@
         </div>
         <div class="today-plusplan-ui hidden" >
             <h1>계획 추가하기 <button><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button></h1>
+            <form class="today-input-group">
+                <input class="today-plan-input" type="text" placeholder="계획 내용">
+                <div class="today-time-inputs"><input type="text" placeholder="시작 시간, 예시: 09:30"><input type="text" placeholder="끝나는 시간, 예시: 11:40"></div>
+                <select class="today-choose-type"><option value="personal">개인적인 일</option><option value="business">비지니스</option></select>
+                <span class="today-check-important">중요한 일<input type="checkbox""></span>
+                <button class="today-comfirm-add">확인 및 추가</button>
+            </form>
         </div>
         <div class="today-delete-ui hidden">
             <span><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></span>

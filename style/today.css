@@ -51,22 +51,30 @@
 
 .today-plusplan-ui {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   background-color: white;
   border: 1px solid black;
   height: 50vh;
   width: 50vh;
   margin-top: -5vh;
-  padding: 8px;
+  padding: 16px;
 }
 .today-plusplan-ui h1 {
-  margin-top: -0.7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  position: relative;
 }
 .today-plusplan-ui h1 button {
-  margin-left: 13vh;
-  border: none;
   position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
   outline: none;
   background-color: white;
   padding: 0;
@@ -77,6 +85,50 @@
   border-radius: 50%;
   cursor: pointer;
   background-color: #999;
+}
+.today-plusplan-ui .today-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 16px;
+}
+.today-plusplan-ui .today-input-group .today-plan-input {
+  font-size: 16px;
+  width: 90%;
+  height: 40px;
+  margin-bottom: 16px;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs input {
+  font-size: 16px;
+  width: 45%;
+  height: 36px;
+  padding: 4px;
+}
+.today-plusplan-ui .today-input-group .today-choose-type {
+  margin-top: 2vh;
+  font-size: 16px;
+  font-weight: 550;
+  height: 3vh;
+  width: 12vw;
+}
+.today-plusplan-ui .today-input-group .today-check-important {
+  align-self: center;
+  justify-self: center;
+  margin-top: 18vh;
+  height: 2vh;
+  width: 8vw;
+  font-size: 18px;
+  margin-left: 6.6vh;
+  position: absolute;
+}
+.today-plusplan-ui .today-input-group .today-comfirm-add {
+  margin-top: 20vh;
 }
 
 .today-delete-ui {
@@ -91,7 +143,7 @@
   padding: 0;
   position: absolute;
   margin-top: -5vh;
-  margin-left: 34.6vh;
+  margin-left: 34.8vh;
   outline: none;
   background-color: white;
   border: none;

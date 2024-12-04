@@ -52,35 +52,95 @@
     font-weight: 650;
 }
 
-.today-plusplan-ui{
+.today-plusplan-ui {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     background-color: white;
     border: 1px solid black;
     height: 50vh;
     width: 50vh;
     margin-top: -5vh;
-    padding: 8px;
-    h1{
-        margin-top: -0.7vh;
-        button{
-            margin-left: 13vh;
-            border: none;
-            position: absolute;
-            outline: none;
-            background-color: white;
-            padding: 0;
-            width: 40px; 
-            height: 40px; 
-            &:hover{
-                border-radius: 50%;
-                cursor: pointer;
-                background-color:#999;
-            }
+    padding: 16px;
+  
+    h1 {
+      display: flex;
+      justify-content: center; // 기본적으로 제목을 가운데 정렬
+      align-items: center; // 세로 정렬
+      width: 100%; // h1이 전체 컨테이너의 너비를 차지
+      margin: 0;
+      position: relative; // 버튼의 위치를 절대 배치하기 위해 상대 배치
+  
+      button {
+        position: absolute; // 버튼을 오른쪽 끝으로 배치
+        right: 0; // 부모 컨테이너 기준으로 오른쪽 끝
+        top: 50%; // 세로 정렬
+        transform: translateY(-50%); // 중앙 정렬
+        border: none;
+        outline: none;
+        background-color: white;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+  
+        &:hover {
+          border-radius: 50%;
+          cursor: pointer;
+          background-color: #999;
         }
+      }
     }
-}
+  
+    .today-input-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: 16px;
+  
+      .today-plan-input {
+        font-size: 16px;
+        width: 90%;
+        height: 40px;
+        margin-bottom: 16px;
+      }
+  
+      .today-time-inputs {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+  
+        input {
+          font-size: 16px;
+          width: 45%;
+          height: 36px;
+          padding: 4px;
+        }
+      }
+      .today-choose-type{
+        margin-top: 2vh;
+        font-size: 16px;
+        font-weight: 550;
+        height: 3vh;
+        width: 12vw;
+      }
+      .today-check-important{
+        align-self: center;
+        justify-self: center;
+        margin-top: 18vh;
+        height: 2vh;
+        width: 8vw;
+        font-size: 18px;
+        margin-left: 6.6vh;
+        position: absolute;
+      }
+      .today-comfirm-add{
+        margin-top: 20vh;
+      }
+    }
+  }
+  
 
 .today-delete-ui{
     border: 1px solid black;
@@ -93,7 +153,7 @@
         padding: 0;
         position: absolute;
         margin-top: -5vh;
-        margin-left: 34.6vh;
+        margin-left: 34.8vh;
         outline: none;
         background-color: white;
         border: none;
