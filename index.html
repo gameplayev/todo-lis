@@ -23,15 +23,15 @@
             <div><!--요기는 시간 쓰는 곳--></div>
             <h1><!--요기는 명언 적는 곳--></h1>
         </div>
-        <div class="today-list">
+        <div class="today-lists">
             <ul><!--요기는리스트 추가될 곳--></ul>
         </div>
         <div class="today-plusplan-ui hidden" >
             <h1>계획 추가하기 <button><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button></h1>
             <form class="today-input-group">
-                <input class="today-plan-input" type="text" placeholder="계획 내용">
-                <div class="today-time-inputs"><input type="text" placeholder="시작 시간, 예시: 09:30"><input type="text" placeholder="끝나는 시간, 예시: 11:40"></div>
-                <select class="today-choose-type"><option value="personal">개인적인 일</option><option value="business">비지니스</option></select>
+                <input class="today-plan-input" required maxlength="18" type="text" placeholder="계획 내용">
+                <div class="today-time-inputs"><div class="today-time-inputs-start"><select><option value="AM">AM</option><option value="PM">PM</option></select><input required type="text" placeholder="시간 입력(1~12)"><input type="text" required placeholder="분 입력(0~60)"></div><span>~</span><div class="today-time-inputs-end"><select><option value="AM">AM</option><option value="PM">PM</option></select><input type="text" required placeholder="시간 입력(1~12)"><input type="text" required placeholder="분 입력(0~60)"></div></div>
+                <select class="today-choose-type"><option value="personal" required>개인적인 일</option><option value="business">비지니스</option></select>
                 <span class="today-check-important">중요한 일<input type="checkbox""></span>
                 <button class="today-comfirm-add">확인 및 추가</button>
             </form>

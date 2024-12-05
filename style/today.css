@@ -50,6 +50,7 @@
 }
 
 .today-plusplan-ui {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -101,14 +102,43 @@
 }
 .today-plusplan-ui .today-input-group .today-time-inputs {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 90%;
+  margin-left: -1.6vh;
 }
-.today-plusplan-ui .today-input-group .today-time-inputs input {
+.today-plusplan-ui .today-input-group .today-time-inputs span {
+  margin-right: 1px;
+  margin-left: 2px;
   font-size: 16px;
-  width: 45%;
-  height: 36px;
-  padding: 4px;
+  align-self: center;
+  font-weight: bold;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs .today-time-inputs-start {
+  display: flex;
+  align-items: center;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs .today-time-inputs-start select {
+  height: 3vh;
+  width: auto;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs .today-time-inputs-start input {
+  margin-left: 1vh;
+  height: 3vh;
+  width: 4vw;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs .today-time-inputs-end {
+  display: flex;
+  align-items: center;
+  margin-left: 0.3vh;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs .today-time-inputs-end select {
+  height: 3vh;
+  width: auto;
+}
+.today-plusplan-ui .today-input-group .today-time-inputs .today-time-inputs-end input {
+  margin-left: 1vh;
+  height: 3vh;
+  width: 4vw;
 }
 .today-plusplan-ui .today-input-group .today-choose-type {
   margin-top: 2vh;
@@ -143,12 +173,15 @@
 }
 
 .today-delete-ui {
+  position: absolute;
   border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
   height: 8vh;
+  margin-top: -55vh;
+  background-color: white;
 }
 .today-delete-ui span {
   padding: 0;
@@ -190,7 +223,7 @@
   display: none;
 }
 
-.today-list {
+.today-lists {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -199,4 +232,53 @@
   width: 100vh;
   height: 70vh;
   margin-top: 2vh;
+}
+.today-lists ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+}
+.today-lists ul::-webkit-scrollbar {
+  width: 8px;
+  margin-left: 4px;
+}
+
+.today-plan {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 90vh;
+  height: auto;
+  padding: 8px;
+  justify-self: center;
+  align-self: center;
+  margin-left: -3.2vh;
+  position: absolute;
+}
+.today-plan h1 {
+  font-size: 16px;
+  margin-left: 2.3vh;
+}
+.today-plan p {
+  font-size: 16px;
+  margin-left: 2.3vh;
+}
+.today-plan div {
+  margin-left: auto;
+}
+.today-plan div button {
+  border-radius: 28px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 8px;
+  margin-left: 1.3vh;
+}
+.today-plan div button:hover {
+  cursor: pointer;
+  background-color: #999;
 }/*# sourceMappingURL=today.css.map */

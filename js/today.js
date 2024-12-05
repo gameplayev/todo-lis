@@ -29,6 +29,27 @@ function curtime() {
 curtime();
 setInterval(curtime, 1000);
 
+function resetInputValuesByClass(className) {
+ 
+    const parentElement = document.querySelector(`.${className}`);
+    
+    if (parentElement) {
+        const inputs = parentElement.querySelectorAll('input, select, textarea');
+        
+        inputs.forEach(element => {
+            if (element.type === 'checkbox' || element.type === 'radio') {
+                element.checked = false;
+            } else if (element.tagName === 'SELECT') {
+                element.selectedIndex = 0;
+            } else {
+                element.value = '';
+            }
+        });
+    }
+    return;
+}
+
+
 function HandlePlusPlanOpenButtonClick(){
     todayPlusPlanUi.classList.remove("hidden");
 }
@@ -53,12 +74,114 @@ buttonTodayDeletePlanUiClose.addEventListener("click",HandleDeletePlanCloseButto
 
 //start of next-line, handle about Plan-add functions
 
-const formOfplanInfo = document.querySelector(".today-input-group");
+const ButtonOfplanInfo = document.querySelector(".today-comfirm-add");
+
 
 function addPlanByInfo(target){
-    //target.preventDefault();
-    
+    const todayPlanDetail = document.querySelector(".today-plan-input");
+    const todayPlanTimeStart = document.querySelector(".today-time-inputs-start");
+    const todayPlanTimeEnd = document.querySelector(".today-time-inputs-end");
+    const todayPlanType = document.querySelector(".today-choose-type");
+    const todayPlanImportant = document.querySelector(".today-check-important input");
+    const todayPlanTimeStartType = todayPlanTimeStart.querySelector("select");
+    const todayPlanTimeStartValue = todayPlanTimeStart.querySelector("input:first-of-type");
+    const todayPlanTimeEndType = todayPlanTimeEnd.querySelector("select");
+    const todayPlanTimeEndValue = todayPlanTimeEnd.querySelector("input:first-of-type");
+    const todayPlanTimeStartValueSecond = todayPlanTimeStart.querySelector("input:nth-of-type(2)");
+    const todayPlanTimeEndValueSecond = todayPlanTimeEnd.querySelector("input:nth-of-type(2)");
+    target.preventDefault();
+    if(!isNaN(todayPlanTimeStartValue.value) && !(todayPlanTimeStartValue.value === null)){
+        if(!(todayPlanTimeStartValue.value >= 1 && todayPlanTimeStartValue.value <= 12)){
+            target.preventDefault();
+            alert("정수 1~12사이에 값을 입력해 주세요");
+            return;
+        }
+    }
+    else{
+        target.preventDefault();
+        alert("정수 1~12사이에 값을 입력해 주세요");
+        return;
+    }
+
+    if(!isNaN(todayPlanTimeEndValue.value) && !(todayPlanTimeEndValue.value === null)){
+        if(!(todayPlanTimeEndValue.value >= 1 && todayPlanTimeEndValue.value <= 12)){
+            target.preventDefault();
+            alert("정수 1~12사이에 값을 입력해 주세요");
+            return;
+        }
+    }
+    else{
+        target.preventDefault();
+        alert("정수 1~12사이에 값을 입력해 주세요");
+        return;
+    }
+
+    if(!isNaN(todayPlanTimeStartValueSecond.value) && !(todayPlanTimeStartValueSecond.value === null)){
+        if(!(todayPlanTimeStartValueSecond.value >= 0 && todayPlanTimeStartValueSecond.value <= 60)){
+            target.preventDefault();
+            alert("정수 0~60사이에 값을 입력해 주세요");
+            return;
+        }
+    }
+    else{
+        target.preventDefault();
+        alert("정수 0~60사이에 값을 입력해 주세요");
+        return;
+    }
+
+    if(!isNaN(todayPlanTimeEndValueSecond.value) && !(todayPlanTimeEndValueSecond.value === null)){
+        if(!(todayPlanTimeEndValueSecond.value >= 0 && todayPlanTimeEndValueSecond.value <= 60)){
+            target.preventDefault();
+            alert("정수 0~60사이에 값을 입력해 주세요");
+            return;
+        }
+    }
+    else{
+        target.preventDefault();
+        alert("정수 0~60사이에 값을 입력해 주세요");
+        return;
+    }
+
+    if(todayPlanTimeStartType.value === "PM" && todayPlanTimeEndType.value === "AM"){
+        target.preventDefault();
+        alert("오늘 계획은 오늘 안에 실행 가능해야합니다.");
+        return;
+    }
+
+
+    //Statements for check is values are available
+    //to make function check if the plan time could overlap is requried
+
+    const todayNewPlan = document.createElement("li");
+    todayNewPlan.classList.add("today-plan");
+    if(todayPlanImportant.checked){
+        todayNewPlan.classList.add("today-plan-important");
+    }
+    let todayPlanTypeValue;
+    if(todayPlanType.value === "personal"){
+        todayPlanTypeValue = "개인적인 일"
+    }
+    else{
+        todayPlanTypeValue = "비지니스"
+    }
+    todayNewPlan.innerHTML = `
+        <h1>${todayPlanDetail.value}</h1>
+        <p>${todayPlanTimeStartType.value} ${todayPlanTimeStartValue.value.padStart(2,"0")}:${todayPlanTimeStartValueSecond.value.padStart(2,"0")} ~ ${todayPlanTimeEndType.value} ${todayPlanTimeEndValue.value.padStart(2,"0")}:${todayPlanTimeEndValueSecond.value.padStart(2,"0")}</p>
+        <p>구분: ${todayPlanTypeValue}</p>
+        <p>현재 상태: 진행중</p>
+        <div>
+            <button>계획 실패</button>
+            <button>계획 완료</button>
+        </div>   
+    `;
+
+    const PlanOrderlist = document.querySelector(".today-lists ul");
+    PlanOrderlist.appendChild(todayNewPlan);
+    HandlePlusPlanCloseButtonClick();
+    resetInputValuesByClass("today-input-group");
+    //the codes for plus Plans
+
+    return;
 }
 
-
-formOfplanInfo.addEventListener("sumbit",addPlanByInfo);
+ButtonOfplanInfo.addEventListener("click",addPlanByInfo);
