@@ -187,17 +187,18 @@
     position: absolute;
     border: 1px solid black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
-    height: 8vh;
+    padding: 12px;
+    height: 20vh;
     margin-top: -55vh;
     background-color: white;
     span{
         padding: 0;
         position: absolute;
-        margin-top: -5vh;
-        margin-left: 34.8vh;
+        margin-top: -17vh;
+        margin-left: 31.5vh;
         outline: none;
         background-color: white;
         border: none;
@@ -210,23 +211,22 @@
         }
     }
     h1{
-        margin-top: 4vh;
+        margin-top: 6vh;
         font-size: 30px;
         font-weight: 550;
-
-        button{
-            border: none;
-            outline: none;
-            background-color: white;
-            height: 24px;
-            width: 24px;
-            padding: 0;
-            margin-left: 1vh;
-            &:hover{
-                cursor: pointer;
-                background-color: #999;
-                border-radius: 50%;
-            }
+    }
+    button{
+        border: none;
+        outline: none;
+        font-size: 20px;
+        padding: 12px;
+        margin-left: 1vh;
+        margin-top: 2vh;
+        border-radius: 18px;
+        &:hover{
+            cursor: pointer;
+            background-color: #999;
+            
         }
     }
 
@@ -270,7 +270,6 @@
     justify-self: center;
     align-self: center;
     margin-left: -3.2vh;
-    position: absolute;
     h1 {
         font-size: 16px;
         margin-left: 2.3vh;
@@ -297,4 +296,13 @@
             }
         }
     }
+}
+.today-plan-important{
+    background-color: #FFFFB6;
+    color: black;
+}
+
+.today-plan-complete{
+    background-color: greenyellow;
+    color: black;
 }

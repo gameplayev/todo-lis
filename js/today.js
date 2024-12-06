@@ -76,7 +76,6 @@ buttonTodayDeletePlanUiClose.addEventListener("click",HandleDeletePlanCloseButto
 
 const ButtonOfplanInfo = document.querySelector(".today-comfirm-add");
 
-
 function addPlanByInfo(target){
     const todayPlanDetail = document.querySelector(".today-plan-input");
     const todayPlanTimeStart = document.querySelector(".today-time-inputs-start");
@@ -154,9 +153,7 @@ function addPlanByInfo(target){
 
     const todayNewPlan = document.createElement("li");
     todayNewPlan.classList.add("today-plan");
-    if(todayPlanImportant.checked){
-        todayNewPlan.classList.add("today-plan-important");
-    }
+
     let todayPlanTypeValue;
     if(todayPlanType.value === "personal"){
         todayPlanTypeValue = "개인적인 일"
@@ -169,19 +166,56 @@ function addPlanByInfo(target){
         <p>${todayPlanTimeStartType.value} ${todayPlanTimeStartValue.value.padStart(2,"0")}:${todayPlanTimeStartValueSecond.value.padStart(2,"0")} ~ ${todayPlanTimeEndType.value} ${todayPlanTimeEndValue.value.padStart(2,"0")}:${todayPlanTimeEndValueSecond.value.padStart(2,"0")}</p>
         <p>구분: ${todayPlanTypeValue}</p>
         <p>현재 상태: 진행중</p>
+        <p class = "hidden" style="font-weight: bold;">!중요한 일!</p>
         <div>
-            <button>계획 실패</button>
+            <button>수정</button>
+            <button>삭제</button>
             <button>계획 완료</button>
+            <span class = "hidden"></span>
         </div>   
     `;
 
     const PlanOrderlist = document.querySelector(".today-lists ul");
+    if(todayPlanImportant.checked){
+        todayNewPlan.classList.add("today-plan-important");
+        todayNewPlan.querySelector("p:nth-of-type(4)").classList.remove("hidden");
+        todayNewPlan.querySelector("div span").innerText = "중요한 일";
+    }
     PlanOrderlist.appendChild(todayNewPlan);
+    const todayNewPlanButtonThree = todayNewPlan.querySelector("div button:nth-of-type(3)");
+    todayNewPlanButtonThree.addEventListener("click",() => {
+        if(todayNewPlanButtonThree.innerText === "완료 취소"){
+            todayNewPlanButtonThree.innerText = "계획 완료"
+            todayNewPlan.querySelector("p:nth-of-type(3)").innerText = "현재 상태: 진행중";
+            if(todayNewPlan.querySelector("div span").innerText === "중요한 일"){
+                todayNewPlan.classList.add("today-plan-important");
+            }
+            todayNewPlan.classList.remove("today-plan-complete");
+        }
+        else{
+            if(todayNewPlan.classList.contains("today-plan-important")){
+                todayNewPlan.classList.remove("today-plan-important");
+            }
+            todayNewPlan.classList.add("today-plan-complete");
+            todayNewPlan.querySelector("p:nth-of-type(3)").innerText = "현재 상태: 완료";
+            todayNewPlanButtonThree.innerText = "완료 취소";
+        }
+        
+    });
+    todayNewPlan.querySelector("div button:nth-of-type(2)").addEventListener("click", () =>{
+        todayNewPlan.remove();
+    });
+    todayNewPlan.querySelector("div button:first-of-type").addEventListener("click", (event) =>{
+        
+    });
+
     HandlePlusPlanCloseButtonClick();
     resetInputValuesByClass("today-input-group");
+
     //the codes for plus Plans
 
     return;
 }
+
 
 ButtonOfplanInfo.addEventListener("click",addPlanByInfo);

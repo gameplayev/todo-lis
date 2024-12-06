@@ -29,7 +29,7 @@
         <div class="today-plusplan-ui hidden" >
             <h1>계획 추가하기 <button><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button></h1>
             <form class="today-input-group">
-                <input class="today-plan-input" required maxlength="18" type="text" placeholder="계획 내용">
+                <input class="today-plan-input" required maxlength="18" type="text" placeholder="계획 내용(18글자 이하)">
                 <div class="today-time-inputs"><div class="today-time-inputs-start"><select><option value="AM">AM</option><option value="PM">PM</option></select><input required type="text" placeholder="시간 입력(1~12)"><input type="text" required placeholder="분 입력(0~60)"></div><span>~</span><div class="today-time-inputs-end"><select><option value="AM">AM</option><option value="PM">PM</option></select><input type="text" required placeholder="시간 입력(1~12)"><input type="text" required placeholder="분 입력(0~60)"></div></div>
                 <select class="today-choose-type"><option value="personal" required>개인적인 일</option><option value="business">비지니스</option></select>
                 <span class="today-check-important">중요한 일<input type="checkbox""></span>
@@ -38,7 +38,9 @@
         </div>
         <div class="today-delete-ui hidden">
             <span><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></span>
-            <h1>모든 계획을 지우시겠습니까?<button><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg></button></h1>
+            <h1>모든 계획을 지우시겠습니까?</h1>
+            <button>동의 및 확인</button>
+
         </div>
     
     </div>
