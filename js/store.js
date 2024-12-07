@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.querySelector("p:nth-of-type(3)").innerText = "현재 상태: 완료";
                 item.querySelector("div button:nth-of-type(3)").innerText = "완료 취소";
             }
-            
+            saveListState(ulElement);
         });
         item.querySelector("div button:nth-of-type(2)").addEventListener("click", () =>{
             item.remove();

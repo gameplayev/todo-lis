@@ -145,7 +145,7 @@ function addPlanByInfo(target){
     const todayPlanTimeStartValueSecond = todayPlanTimeStart.querySelector("input:nth-of-type(2)");
     const todayPlanTimeEndValueSecond = todayPlanTimeEnd.querySelector("input:nth-of-type(2)");
     target.preventDefault();
-    if(todayPlanDetail.value === null){
+    if(todayPlanDetail.value === ""){
         alert("계획 내용을 입력해 주세요");
         return;
     }
@@ -229,7 +229,7 @@ function addPlanByInfo(target){
             todayNewPlan.querySelector("p:nth-of-type(3)").innerText = "현재 상태: 완료";
             todayNewPlanButtonThree.innerText = "완료 취소";
         }
-        
+        saveListState(ulElement);
     });
     todayNewPlan.querySelector("div button:nth-of-type(2)").addEventListener("click", () =>{
         todayNewPlan.remove();
