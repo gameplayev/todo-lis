@@ -45,11 +45,20 @@
 
 .today-date-show{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 1vh;
     font-size: 20px;
     font-weight: 650;
+    h1{
+        width: 100vw;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
 }
 
 .today-plusplan-ui {
@@ -233,7 +242,7 @@
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 .today-lists{
@@ -305,4 +314,92 @@
 .today-plan-complete{
     background-color: greenyellow;
     color: black;
+}
+
+
+
+.today-setting-ui {
+    position: absolute;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    height: 22vh;
+    width: 28vw;
+    margin-top: -50vh;
+    background-color: white;
+
+    span {
+        position: absolute;
+        top: 5px; /* 상단에서 약간의 여백 */
+        right: 5px; /* 우측에서 약간의 여백 */
+        padding: 0;
+        outline: none;
+        background-color: white;
+        border: none;
+        height: 24px;
+        width: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #999;
+            border-radius: 50%;
+        }
+    }
+
+    h1 {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    button {
+        border: none;
+        outline: none;
+        font-size: 16px;
+        padding: 12px;
+        margin-left: 1vh;
+        margin-top: 2vh;
+        border-radius: 18px;
+        &:hover {
+            cursor: pointer;
+            background-color: #999;
+        }
+    }
+
+    div {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        input {
+            height: 3vh;
+            width: 20vw;
+            font-size: 16px;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 8px;
+            margin-left: 1vh;
+            border-radius: 18px;
+            &:hover {
+                cursor: pointer;
+                background-color: #999;
+            }
+        }
+    }
+
+    p {
+        select {
+            margin-left: 2vh;
+            font-size: 16px;
+        }
+    }
 }
