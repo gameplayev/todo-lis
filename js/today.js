@@ -7,6 +7,17 @@ const buttonTodayDeletePlanUiOpen = document.querySelector("#today-del-all-open"
 const todayDeletePlanUi = document.querySelector(".today-delete-ui");
 const buttonTodayDeletePlanUiClose = document.querySelector(".today-delete-ui span");
 
+function splitTime(timeStr) {
+    const [period, time] = timeStr.split(" ");
+    const [hour, minute] = time.split(":").map(Number); 
+
+    return {
+        period,  
+        hour,    
+        minute 
+    };
+}
+
 let menuForEdit = null;
 function curtime() {
     const curDate = new Date();
@@ -51,7 +62,6 @@ function resetInputValuesByClass(className) {
     }
     return;
 }
-
 
 function HandlePlusPlanOpenButtonClick(){
     todayPlusPlanUi.classList.remove("hidden");
@@ -178,7 +188,33 @@ function addPlanByInfo(target){
         alert("오늘 계획은 오늘 안에 실행 가능해야합니다.");
         return;
     }
+
+    const startTimeA = [todayPlanTimeStartType.value, todayPlanTimeStartValue.value,todayPlanTimeStartValueSecond.value];
+    const startTimeB = [todayPlanTimeEndType.value, todayPlanTimeEndValue.value, todayPlanTimeEndValueSecond.value];
+
+    function convertToMinutesFromArray(timeArray) {
+        let period = timeArray[0];
+        let hours = parseInt(timeArray[1]); 
+        let minutes = parseInt(timeArray[2]); 
     
+
+        if (period === "AM") {
+            if (hours === 12) {  
+                hours = 0;
+            }
+        } else if (period === "PM") {
+            if (hours !== 12) {  
+                hours += 12;
+            }
+        }
+
+        return hours * 60 + minutes;
+    }
+
+    if(convertToMinutesFromArray(startTimeA) > convertToMinutesFromArray(startTimeB)){
+        alert("끝나는 시간이 시작 시간보다 빠릅니다");
+        return;
+    }
     //Statements for check if values are available
     
     const todayNewPlan = document.createElement("li");
@@ -238,15 +274,35 @@ function addPlanByInfo(target){
     
     todayNewPlan.setAttribute("data-order", orderCounter++);
     HandlePlusPlanCloseButtonClick();
-    resetInputValuesByClass("today-input-group");
   
 
     //the codes for plus Plans
     todayNewPlan.querySelector("div button:first-of-type").addEventListener("click", (event) => {
         ButtonOfplanInfo.innerText = "확인 및 수정";
         todayPlusPlanUi.querySelector("h1").innerHTML = `계획 수정하기<button><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button>`;
+        const todayPlusPlanInputs = document.querySelector(".today-input-group");
+        todayPlusPlanInputs.querySelector("input").value = todayNewPlan.querySelector("h1").innerText;
+        let TimeA = todayNewPlan.querySelector("p").textContent.split("~")[0].trim();
+        let TimeB = todayNewPlan.querySelector("p").textContent.split("~")[1].trim();
+        TimeA = splitTime(TimeA); TimeB = splitTime(TimeB);
+        document.querySelector(".today-time-inputs-start input:first-of-type").value = TimeA.hour;
+        document.querySelector(".today-time-inputs-start input:last-of-type").value = TimeA.minute;
+        document.querySelector(".today-time-inputs-end select").value = TimeB.period;
+        document.querySelector(".today-time-inputs-end input:first-of-type").value = TimeB.hour;
+        document.querySelector(".today-time-inputs-end input:last-of-type").value = TimeB.minute;
+        if(todayPlanTypeValue === "개인적인 일"){
+            document.querySelector(".today-choose-type").value = "personal";
+        }
+        else{
+            document.querySelector(".today-choose-type").value = "business";
+        }
+        document.querySelector(".today-time-inputs-start select").value = TimeA.period;
         todayPlusPlanUi.querySelector("h1").addEventListener("click",HandlePlusPlanCloseButtonClick);
+        if(!(todayNewPlan.querySelector("p:nth-of-type(4)").classList.contains("hidden"))){
+            document.querySelector(".today-check-important input").checked =true;
+        }
         ButtonOfplanInfo.addEventListener("click",addPlanByInfo);
+        
         HandlePlusPlanOpenButtonClick();
         menuForEdit = todayNewPlan;
         
@@ -266,6 +322,7 @@ function addPlanByInfo(target){
         sortListByStartTime();
     }
     saveListState(ulElement);
+    resetInputValuesByClass("today-input-group");
     return;
 }
 
@@ -328,12 +385,17 @@ todaySettingUi.querySelector("div button").addEventListener("click",() => {
 //the simple logic for delete plans
 document.querySelector(".today-delete-ui button").addEventListener("click",()=>{
     const todayAllPlans = document.querySelectorAll(".today-lists li");
+    if(!window.confirm("정말 삭제하시겠습니까?")){
+        alert("취소되었습니다");
+    }
+    alert("삭제되었습니다");
     todayAllPlans.forEach(item => {
         item.remove();
     });
     saveListState(ulElement);
     document.querySelector(".today-delete-ui").classList.add("hidden");
 });
+
 
 document.querySelector(".nav-item:first-of-type").addEventListener("click",()=>{
     location.reload();

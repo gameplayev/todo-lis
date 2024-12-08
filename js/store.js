@@ -50,12 +50,34 @@ document.addEventListener('DOMContentLoaded', () => {
     restoreULStateQuotes(document.querySelector(".today-date-show h1"));
     ulElement.querySelectorAll("li").forEach(item =>{
         item.querySelector("div button:first-of-type").addEventListener("click", (event) => {
-            document.querySelector(".today-comfirm-add").innerText = "확인 및 수정";
+            ButtonOfplanInfo.innerText = "확인 및 수정";
             todayPlusPlanUi.querySelector("h1").innerHTML = `계획 수정하기<button><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button>`;
+            const todayPlusPlanInputs = document.querySelector(".today-input-group");
+            todayPlusPlanInputs.querySelector("input").value = item.querySelector("h1").innerText;
+            let TimeA = item.querySelector("p").textContent.split("~")[0].trim();
+            let TimeB = item.querySelector("p").textContent.split("~")[1].trim();
+            TimeA = splitTime(TimeA); TimeB = splitTime(TimeB);
+            document.querySelector(".today-time-inputs-start input:first-of-type").value = TimeA.hour;
+            document.querySelector(".today-time-inputs-start input:last-of-type").value = TimeA.minute;
+            document.querySelector(".today-time-inputs-end select").value = TimeB.period;
+            document.querySelector(".today-time-inputs-end input:first-of-type").value = TimeB.hour;
+            document.querySelector(".today-time-inputs-end input:last-of-type").value = TimeB.minute;
+            
+            if(item.querySelector(".today-choose-type").value === "개인적인 일"){
+                document.querySelector(".today-choose-type").value = "personal";
+            }
+            else{
+                document.querySelector(".today-choose-type").value = "business";
+            }
+            if(!(item.querySelector("p:nth-of-type(4)").classList.contains("hidden"))){
+                document.querySelector(".today-check-important input").checked =true;
+            }
+            document.querySelector(".today-time-inputs-start select").value = TimeA.period;
             todayPlusPlanUi.querySelector("h1").addEventListener("click",HandlePlusPlanCloseButtonClick);
-            document.querySelector(".today-comfirm-add").addEventListener("click",addPlanByInfo);
+            ButtonOfplanInfo.addEventListener("click",addPlanByInfo);
             HandlePlusPlanOpenButtonClick();
             menuForEdit = item;
+        
         });
         
         item.querySelector("div button:nth-of-type(3)").addEventListener("click",() => {
